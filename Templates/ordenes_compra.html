@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Órdenes de Compra</title>
+</head>
+<body>
+    <h1>Órdenes de Compra</h1>
+    <a href="{{ url_for('agregar_orden_compra') }}">Agregar Orden de Compra</a>
+    <ul>
+        {% for orden in ordenes %}
+        <li>Orden #{{ orden.id }} - Artículo: {{ orden.articulo_id }} - Cantidad: {{ orden.cantidad }}</li>
+        {% endfor %}
+    </ul>
+    <a href="{{ url_for('index') }}">
+        <button>Volver al Inicio</button>
+    </a>
+</body>
+</html>

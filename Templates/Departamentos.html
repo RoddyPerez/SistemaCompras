@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Departamentos</title>
+</head>
+<body>
+    <h1>Departamentos</h1>
+    <a href="{{ url_for('agregar_departamento') }}">Agregar Departamento</a>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Nombre</th>
+                <th>Acciones</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for departamento in departamentos %}
+            <tr>
+                <td>{{ departamento.nombre }}</td>
+                <td>
+                    <a href="{{ url_for('editar_departamento', id=departamento.id) }}" class="btn btn-warning btn-sm">Editar</a>
+                    <form method="POST" action="{{ url_for('eliminar_departamento', id=departamento.id) }}" style="display:inline;">
+                        <button type="submit" class="btn btn-danger btn-sm" onclick="return confirm('¿Seguro que quieres eliminar este departamento?');">Eliminar</button>
+                    </form>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    <a href="{{ url_for('index') }}">
+        <button>Volver al Inicio</button>
+    </a>
+</body>
+</html>
+
+

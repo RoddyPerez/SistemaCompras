@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>{% block title %}Sistema de Compras{% endblock %}</title>
+</head>
+<body>
+    <h1>{% block header %}Sistema de Compras{% endblock %}</h1>
+    <ul>
+        <li><a href="{{ url_for('listar_departamentos') }}">Gestión de Departamentos</a></li>
+        <li><a href="{{ url_for('listar_unidades_medida') }}">Gestión de Unidades de Medida</a></li>
+        <li><a href="{{ url_for('listar_proveedores') }}">Gestión de Proveedores</a></li>
+        <li><a href="{{ url_for('listar_articulos') }}">Gestión de Artículos</a></li>
+        <li><a href="{{ url_for('listar_ordenes_compra') }}">Gestión de Órdenes de Compra</a></li>
+        <li><a href="{{ url_for('listar_asientos_contables') }}">Gestión de Asientos Contables</a></li>
+    </ul>
+    {% block content %}{% endblock %}
+</body>
+</html>

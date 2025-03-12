@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Artículos</title>
+</head>
+<body>
+    <h1>Artículos</h1>
+    <a href="{{ url_for('agregar_articulo') }}">Agregar Artículo</a>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Descripción</th>
+                <th>Marca</th>
+                <th>Acciones</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for articulo in articulos %}
+            <tr>
+                <td>{{ articulo.descripcion }}</td>
+                <td>{{ articulo.marca }}</td>
+                <td>
+                    <a href="{{ url_for('editar_articulo', id=articulo.id) }}" class="btn btn-warning btn-sm">Editar</a>
+                    <form method="POST" action="{{ url_for('eliminar_articulo', id=articulo.id) }}" style="display:inline;">
+                        <button type="submit" class="btn btn-danger btn-sm" onclick="return confirm('¿Seguro que quieres eliminar este artículo?');">Eliminar</button>
+                    </form>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    <a href="{{ url_for('index') }}">
+        <button>Volver al Inicio</button>
+    </a>
+</body>
+</html>

@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Agregar Asiento Contable</title>
+</head>
+<body>
+    <h1>Agregar Nuevo Asiento Contable</h1>
+    <form method="POST">
+        <label>Descripción:</label>
+        <input type="text" name="descripcion" required>
+        <label>Cuenta Contable:</label>
+        <input type="text" name="cuenta_contable" required>
+        <label>Tipo de Movimiento (DB/CR):</label>
+        <input type="text" name="tipo_movimiento" required>
+        <label>Fecha de Asiento:</label>
+        <input type="date" name="fecha_asiento" required>
+        <label>Monto:</label>
+        <input type="number" step="0.01" min="0" name="monto" required>
+        <button type="submit">Guardar</button>
+    </form>
+</body>
+</html>

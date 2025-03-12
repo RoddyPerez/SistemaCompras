@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Asientos Contables</title>
+</head>
+<body>
+    <h1>Asientos Contables</h1>
+    <a href="{{ url_for('agregar_asiento_contable') }}">Agregar Asiento Contable</a>
+    <ul>
+        {% for asiento in asientos %}
+        <li>{{ asiento.descripcion }} - Monto: {{ asiento.monto }}</li>
+        {% endfor %}
+    </ul>
+    <a href="{{ url_for('index') }}">
+        <button>Volver al Inicio</button>
+    </a>
+</body>
+</html>
