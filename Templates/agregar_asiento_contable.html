@@ -2,21 +2,35 @@
 <html>
 <head>
     <title>Agregar Asiento Contable</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
 </head>
-<body>
-    <h1>Agregar Nuevo Asiento Contable</h1>
-    <form method="POST">
-        <label>Descripción:</label>
-        <input type="text" name="descripcion" required>
-        <label>Cuenta Contable:</label>
-        <input type="text" name="cuenta_contable" required>
-        <label>Tipo de Movimiento (DB/CR):</label>
-        <input type="text" name="tipo_movimiento" required>
-        <label>Fecha de Asiento:</label>
-        <input type="date" name="fecha_asiento" required>
-        <label>Monto:</label>
-        <input type="number" step="0.01" min="0" name="monto" required>
-        <button type="submit">Guardar</button>
-    </form>
+<body class="bg-light">
+    <div class="container mt-5">
+        <h1 class="text-center mb-4">Agregar Nuevo Asiento Contable</h1>
+        <form method="POST" class="bg-white p-4 rounded shadow-sm">
+            <div class="mb-3">
+                <label class="form-label">Descripción:</label>
+                <input type="text" name="descripcion" class="form-control" required>
+            </div>
+            <div class="mb-3">
+                <label class="form-label">Cuenta Contable:</label>
+                <input type="text" name="cuenta_contable" class="form-control" required>
+            </div>
+            <div class="mb-3">
+                <label class="form-label">Tipo de Movimiento (DB/CR):</label>
+                <input type="text" name="tipo_movimiento" class="form-control" required>
+            </div>
+            <div class="mb-3">
+                <label class="form-label">Fecha de Asiento:</label>
+                <input type="date" name="fecha_asiento" class="form-control" required>
+            </div>
+            <div class="mb-3">
+                <label class="form-label">Monto:</label>
+                <input type="number" step="0.01" min="0" name="monto" class="form-control" required>
+            </div>
+            <button type="submit" class="btn btn-primary w-100">Guardar</button>
+        </form>
+    </div>
 </body>
 </html>

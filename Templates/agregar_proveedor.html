@@ -11,7 +11,8 @@
             <label class="form-label">Cédula/RNC:</label>
             <input type="text" id="cedula" name="cedula_rnc" class="form-control" required 
                    pattern="\d{3}-?\d{7}-?\d{1}" 
-                   title="Ingrese una cédula válida en formato 000-0000000-0 o 00000000000">
+                   title="Ingrese una cédula válida en formato 000-0000000-0 o 00000000000" maxlength="11">
+            <div id="mensaje-error" class="text-danger mt-2" style="display: none;">⚠ Cédula no válida</div>
         </div>
         <div class="mb-3">
             <label class="form-label">Nombre Comercial:</label>
@@ -21,33 +22,48 @@
         <a href="{{ url_for('listar_proveedores') }}" class="btn btn-secondary">Cancelar</a>
     </form>
 
-    <script>
-    document.getElementById("formulario").addEventListener("submit", function(event) {
-        let cedula = document.getElementById("cedula").value;
-
-        if (!validarCedula(cedula)) {
-            alert("Cédula inválida. Asegúrate de ingresarla correctamente.");
-            event.preventDefault(); // Detiene el envío del formulario
-        }
-    });
-
-    function validarCedula(cedula) {
-        // Remover guiones si existen
-        cedula = cedula.replace(/-/g, "");
-
-        // Debe tener 11 dígitos
-        if (cedula.length !== 11 || isNaN(cedula)) return false;
-
-        // Algoritmo de validación de la Cédula Dominicana
-        let suma = 0, peso = [1, 2, 1, 2, 1, 2, 1, 2, 1, 2];
-        for (let i = 0; i < 10; i++) {
-            let num = cedula[i] * peso[i];
-            suma += (num >= 10) ? num - 9 : num;
-        }
-
-        let digitoVerificador = (10 - (suma % 10)) % 10;
-        return digitoVerificador == cedula[10];
-    }
-    </script>
+    
 </body>
+<script>                      
+    function valida(cedula){
+                  cedula = document.getElementById('cedula').value;
+                  c = cedula.split('');
+                  v = [1,2,1,2,1,2,1,2,1,2]
+                var result = 0 ; 
+                var ar ;
+                var up;
+                var oc ;
+                for (i=0;i <10;i++){  
+                up =c[i] * v[i];
+                ab = up;
+                if ( ab >= 10 ) {
+                  oc = ab.toString()
+                          .split('')
+                          .map(x => parseInt(x) )
+                          .reduce( (x, y) => x + y);
+                }else {
+                  oc = ab;
+                }
+                result = parseFloat(result) + parseFloat(oc);   
+                }
+                  dp = result;
+                  ac = dp.toString().split('')[0] + '0';
+                  ac = parseInt(ac);
+                  uj = (ac / 10) * 10;
+                    if (uj < dp ) {
+                    dp = (uj + 10) - dp; 
+                    } else { 
+                      dp = uj - dp
+                    }
+  
+                if (c[10] == dp) {             
+                  
+                  document.getElementById('result').innerHTML = '<p> Cedula Correcta </p>';
+                } else {
+                  
+                  document.getElementById('result').innerHTML = '<p> Cedula Incorrecta </p>';
+                  
+                }
+          }                    
+   </script>
 </html>

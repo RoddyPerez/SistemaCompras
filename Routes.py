@@ -114,16 +114,26 @@ def listar_articulos():
 
 @app.route('/articulos/agregar', methods=['GET', 'POST'])
 def agregar_articulo():
+    unidades = UnidadMedida.query.all()  # Obtener unidades de medida existentes
+
     if request.method == 'POST':
         descripcion = request.form['descripcion']
         marca = request.form['marca']
         unidad_medida_id = request.form['unidad_medida_id']
         existencia = request.form['existencia']
-        nuevo_articulo = Articulo(descripcion=descripcion, marca=marca, unidad_medida_id=unidad_medida_id, existencia=existencia)
+
+        nuevo_articulo = Articulo(
+            descripcion=descripcion,
+            marca=marca,
+            unidad_medida_id=unidad_medida_id,
+            existencia=existencia
+        )
         db.session.add(nuevo_articulo)
         db.session.commit()
         return redirect(url_for('listar_articulos'))
-    return render_template('agregar_articulo.html')
+    
+    return render_template('agregar_articulo.html', unidades=unidades)
+
 
 @app.route('/articulos/editar/<int:id>', methods=['GET', 'POST'])
 def editar_articulo(id):
@@ -152,8 +162,8 @@ def listar_ordenes_compra():
 
 @app.route('/ordenes_compra/agregar', methods=['GET', 'POST'])
 def agregar_orden_compra():
-    articulos = Articulo.query.all()
-    unidades = UnidadMedida.query.all()
+    articulos = Articulo.query.all()  # Obtener los artículos existentes
+    unidades = UnidadMedida.query.all()  # Obtener las unidades de medida existentes
 
     if request.method == 'POST':
         fecha_orden = request.form.get('fecha_orden')

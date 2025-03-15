@@ -12,16 +12,26 @@
             <input type="date" name="fecha_orden" class="form-control" required>
         </div>
         <div class="mb-3">
-            <label class="form-label">Artículo ID:</label>
-            <input type="number" name="articulo_id" class="form-control" required>
+            <label class="form-label">Artículo:</label>
+            <select name="articulo_id" class="form-select" required>
+                <option value="" disabled selected>Seleccione un artículo</option>
+                {% for articulo in articulos %}
+                <option value="{{ articulo.id }}">{{ articulo.descripcion }}</option>
+                {% endfor %}
+            </select>
         </div>
         <div class="mb-3">
             <label class="form-label">Cantidad:</label>
             <input type="number" name="cantidad" class="form-control" required>
         </div>
         <div class="mb-3">
-            <label class="form-label">Unidad de Medida ID:</label>
-            <input type="number" name="unidad_medida_id" class="form-control" required>
+            <label class="form-label">Unidad de Medida:</label>
+            <select name="unidad_medida_id" class="form-select" required>
+                <option value="" disabled selected>Seleccione una unidad de medida</option>
+                {% for unidad in unidades %}
+                <option value="{{ unidad.id }}">{{ unidad.descripcion }}</option>
+                {% endfor %}
+            </select>
         </div>
         <div class="mb-3">
             <label class="form-label">Costo Unitario:</label>

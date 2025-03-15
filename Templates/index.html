@@ -2,16 +2,20 @@
 <html>
 <head>
     <title>Sistema de Compras</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
 </head>
-<body>
-    <h1>Bienvenido al Sistema de Compras</h1>
-    <ul>
-        <li><a href="{{ url_for('listar_departamentos') }}">Gestión de Departamentos</a></li>
-        <li><a href="{{ url_for('listar_unidades_medida') }}">Gestión de Unidades de Medida</a></li>
-        <li><a href="{{ url_for('listar_proveedores') }}">Gestión de Proveedores</a></li>
-        <li><a href="{{ url_for('listar_articulos') }}">Gestión de Artículos</a></li>
-        <li><a href="{{ url_for('listar_ordenes_compra') }}">Gestión de Órdenes de Compra</a></li>
-        <li><a href="{{ url_for('listar_asientos_contables') }}">Gestión de Asientos Contables</a></li>
-    </ul>
+<body class="bg-light">
+    <div class="container mt-5">
+        <h1 class="text-center mb-4">Bienvenido al Sistema de Compras</h1>
+        <div class="list-group">
+            <a href="{{ url_for('listar_departamentos') }}" class="list-group-item list-group-item-action">Gestión de Departamentos</a>
+            <a href="{{ url_for('listar_unidades_medida') }}" class="list-group-item list-group-item-action">Gestión de Unidades de Medida</a>
+            <a href="{{ url_for('listar_proveedores') }}" class="list-group-item list-group-item-action">Gestión de Proveedores</a>
+            <a href="{{ url_for('listar_articulos') }}" class="list-group-item list-group-item-action">Gestión de Artículos</a>
+            <a href="{{ url_for('listar_ordenes_compra') }}" class="list-group-item list-group-item-action">Gestión de Órdenes de Compra</a>
+            <a href="{{ url_for('listar_asientos_contables') }}" class="list-group-item list-group-item-action">Gestión de Asientos Contables</a>
+        </div>
+    </div>
 </body>
 </html>
